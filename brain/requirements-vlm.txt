@@ -1,0 +1,18 @@
+# Local vision-LLM backend (Phase C). The EXACT set is pinned during the Phase C head-to-head
+# benchmark on the real webcam feed; this file documents the two candidate stacks.
+#
+# IMPORTANT: the installed torch is the CPU-only build. The local VLM needs CUDA. Install the
+# CUDA torch build explicitly for the RTX 4050, e.g.:
+#   pip install torch --index-url https://download.pytorch.org/whl/cu121
+#
+# Option A — transformers (Qwen2-VL-2B-Instruct / moondream2 / Florence-2):
+# torch                 # CUDA build (see above)
+# transformers
+# accelerate
+# einops
+# timm
+# sentencepiece
+#
+# Option B — llama.cpp GGUF (quantised VLM, lighter VRAM):
+# llama-cpp-python       # CUDA build
+#   + a GGUF model file + its mmproj projector (downloaded out-of-band)

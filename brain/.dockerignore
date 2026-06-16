@@ -1,0 +1,22 @@
+# Keep the build context small — only kitchenvision/, models/, web/dist, config.json and
+# requirements-venv.txt are COPYied by the Dockerfile; everything heavy is excluded or mounted.
+.venv/
+venv/
+data/
+**/__pycache__/
+**/*.pyc
+web/node_modules/
+web/src/
+*.log
+*.jpg
+*.png
+run.log
+run.err.log
+gpu_probe*.py
+live_*.py
+*_probe.py
+tests/
+.pytest_cache/
+Dockerfile
+docker-compose.yml
+.dockerignore

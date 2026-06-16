@@ -1,0 +1,81 @@
+# ─── Python ───────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ─── Node / web build ─────────────────────────────────────
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+# ─── Models, data & runtime state (never commit) ──────────
+brain/data/
+brain/models/
+*.db
+*.sqlite
+*.sqlite3
+*.onnx
+*.pt
+*.bin
+*.zip
+
+# ─── Live config & secrets (commit config.example.json only)
+brain/config.json
+*.bak
+.env
+.env.*
+
+# ─── Logs & scratch artefacts ─────────────────────────────
+*.log
+brain/*.jpg
+brain/*.png
+.shots/
+screenshot_run.log
+# brain dev/probe scratch (the real suite is brain/tests/)
+brain/gpu_probe.py
+brain/live_pipeline.py
+brain/live_recog_probe.py
+brain/live_smoke.py
+brain/live_probe.py
+
+# ─── OS / editor ──────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+Untitled-*.txt
+
+# ─── Legacy / superseded original system + local scratch (kept locally, not published)
+# (the published repo is head/ + brain/ + docs/ only)
+/pi_agent.py
+/track_client.py
+/station/
+/servo_sweep.py
+/servo_test.py
+/servo_ham.py
+/sweep_send.py
+/camera_test.py
+/face_track.py
+/dir_test.py
+/make_wiring_diagram.py
+/start_kiosk.sh
+/kitchen-vision.service
+/PRD.md
+/PHASE0.md
+/apply_hwpwm.sh
+/setup.sh
+/restart_brain.ps1
+/probe_*.py
+/kitchen-kiosk.desktop
+/yunet.onnx
+# root-level scratch images (docs/images/ is committed; root images are not)
+/*.jpg
+/*.png
+/*.svg

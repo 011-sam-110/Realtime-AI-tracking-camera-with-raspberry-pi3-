@@ -1,0 +1,48 @@
+{
+  "pi_ip": "192.168.68.127",
+  "stream_port": 8000,
+  "stream_path": "/raw",
+  "servo_udp": 9999,
+  "overlay_udp": 9998,
+  "dashboard_port": 8090,
+  "retention_days": 30,
+  "recognition": {
+    "engine": "insightface",
+    "model": "buffalo_l",
+    "providers": ["CUDAExecutionProvider", "CPUExecutionProvider"],
+    "det_size": 640,
+    "det_thresh": 0.6,
+    "recog_threshold": 0.45,
+    "min_det_score": 0.65,
+    "min_face_px": 70,
+    "min_blur_var": 40.0,
+    "centroid_alpha": 0.9,
+    "fusion_window": 5
+  },
+  "track": {
+    "outer_px": 90,
+    "inner_px": 50,
+    "kp": 0.04,
+    "max_step": 8.0,
+    "direction": -1,
+    "ema": 0.3,
+    "search_after": 2.5,
+    "sweep_speed": 22.0,
+    "axes": ["pan"]
+  },
+  "vlm": {
+    "backend": "local",
+    "local_model": "qwen2-vl-2b",
+    "device": "cuda",
+    "max_tokens": 300,
+    "base_url": "",
+    "api_key": "",
+    "model": "auto"
+  },
+  "activity": {
+    "enabled": true,
+    "cadence_seconds": 10,
+    "save_thumbnails": true,
+    "min_confidence": 0.0
+  }
+}

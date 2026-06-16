@@ -1,0 +1,42 @@
+# Kitchen Vision brain — laptop GPU container.
+#   build + run:   cd brain && docker compose up -d --build
+#   logs:          docker compose logs -f
+#   dashboard:     http://localhost:8090
+#   retune:        edit config.json on the host, then  docker compose restart brain
+#   stop:          docker compose down
+services:
+  brain:
+    build: .
+    image: kitchen-vision-brain:latest
+    container_name: kitchen-vision-brain
+    restart: unless-stopped
+
+    ports:
+      - "8090:8090"            # dashboard / API / MJPEG /video
+
+    volumes:
+      - ./config.json:/app/config.json:ro   # host-edited tuning surface (restart to apply)
+      - ./data:/app/data                     # SQLite + face crops + thumbnails persist on the host
+      - insightface-cache:/root/.insightface # buffalo_l models (downloaded once into the volume)
+      - hf-cache:/root/.cache/huggingface    # VLM weights cache (qwen2-vl, when activity is enabled)
+
+    environment:
+      - PYTHONUNBUFFERED=1
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+
+    # GPU passthrough via the nvidia container runtime (already registered on this host).
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+    # The brain reaches the Pi (192.168.68.127) over the LAN; Docker Desktop NATs the container's
+    # outbound traffic through the host, so MJPEG pull + UDP servo work on the default bridge.
+
+volumes:
+  insightface-cache:
+  hf-cache:

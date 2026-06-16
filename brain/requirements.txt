@@ -1,0 +1,13 @@
+# Kitchen Vision brain — core deps (Phases B & D).
+# The local vision-LLM has its own (heavier, GPU) deps — see requirements-vlm.txt.
+numpy
+opencv-python
+onnxruntime            # this machine's wheel already exposes CUDA + TensorRT execution providers
+insightface
+fastapi
+uvicorn[standard]
+openai                 # cloud VLM (FreeLLMAPI, OpenAI-compatible) fallback/deep-pass
+pillow
+requests
+httpx
+websockets             # live dashboard channel

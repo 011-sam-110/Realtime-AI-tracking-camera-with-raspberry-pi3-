@@ -1,0 +1,15 @@
+[Unit]
+Description=Kitchen Vision Pi agent (MJPEG stream + hardware-PWM servo)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/sampi/kitchen-vision
+ExecStart=/usr/bin/python3 -u /home/sampi/kitchen-vision/pi_agent.py
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
