@@ -93,7 +93,7 @@ architecture** with a clean, decoupled wire protocol.
 - **Concurrency done carefully.** Decoupled daemon threads (capture/track · recognition · perception ·
   prune · uvicorn) share one lock-guarded state singleton; SQLite is WAL with per-thread connections.
 - **Full stack, one repo:** embedded Python on the Pi → GPU ML → FastAPI → a React/TypeScript SPA →
-  SQLite, with a **37-test** pytest suite and an offline `--selfcheck` wiring gate.
+  SQLite, with a **96-test** pytest suite and an offline `--selfcheck` wiring gate.
 
 ## Tech stack
 
